@@ -2,12 +2,12 @@ class Solution(object):
     def containsDuplicate(self, nums):
         count = {}
         
-        for i in range (len(nums)):
+        for num in nums:
             
-            count[nums[i]] = count.get(nums[i], 0) + 1
+            count[num] = count.get(num, 0) + 1
 
 
-            if count.get(nums[i]) > 1:
+            if count.get(num) > 1:
                 return True
 
         return False
