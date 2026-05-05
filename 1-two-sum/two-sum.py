@@ -1,8 +1,11 @@
 class Solution(object):
     def twoSum(self, nums, target):
-        
-        for i in range (len(nums)):
-            for j in range (i + 1, len(nums)):
-                if nums[i] + nums[j] == target:
+        hashmap = {}
 
-                    return [i, j]
+        for i , num in enumerate(nums):
+            diff = target - num
+            if diff in hashmap:
+                return [hashmap[diff], i]
+            
+            hashmap[num] = i
+
