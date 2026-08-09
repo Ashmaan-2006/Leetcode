@@ -10,13 +10,11 @@ class Solution(object):
 
         ret = []
 
-        # matrix = [[5,6,7]]
+        while matrix:
 
-        while matrix:  #making sure we are only going through it while it exists
-            
-            if matrix:   #while there are rows in the matrix and the first row got columns, as the first row is going to be used
-                
-                ret += matrix.pop(0)   #top
+            if matrix:
+
+                ret += matrix.pop(0)
 
             if matrix and matrix[0]:
 
@@ -30,11 +28,13 @@ class Solution(object):
 
             if matrix and matrix[0]:
 
-                for row in matrix[::-1]:
-
+                for row in matrix[::-1] :
                     ret.append(row.pop(0))
 
+        
         return ret
+
+
 
 
 
