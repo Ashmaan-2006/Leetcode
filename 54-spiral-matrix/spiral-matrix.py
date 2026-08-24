@@ -1,50 +1,31 @@
 class Solution(object):
     def spiralOrder(self, matrix):
 
-    #    while it exists: 
-    #     top 
-    #     right
-    #     bottom is reversed 
-    #     left
-    #     repeat
-
-        ret = []
-
+        output = []
+        
         while matrix:
 
-            if matrix:
+            if matrix and matrix[0]:
 
-                ret += matrix.pop(0)
+                output += matrix.pop(0)
 
             if matrix and matrix[0]:
 
-                for row in matrix:
-
-                    ret.append(row.pop())
+                for num in matrix:
+                    output.append(num.pop())
 
             if matrix:
 
-                ret += matrix.pop()[::-1]
+                output += matrix.pop()[::-1]
 
             if matrix and matrix[0]:
 
-                for row in matrix[::-1] :
-                    ret.append(row.pop(0))
+                for num in matrix[::-1]:
 
-        
-        return ret
+                    output.append(num.pop(0))
 
-
-
-
-
-
-
-
-
-
-
-
+        return output
+                
 
 
 
