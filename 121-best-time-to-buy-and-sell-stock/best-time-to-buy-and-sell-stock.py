@@ -5,14 +5,17 @@ class Solution(object):
         :rtype: int
         """
 
-        min_price = prices[0]
+        lowest = prices[0]
         diff = 0
 
-        for price in prices[1:]:
-            diff = max(diff, price - min_price)
-            min_price = min(min_price, price)
+        for i in range(len(prices)):
+
+            if len(prices) > (i + 1):
+
+                diff = max((prices[i + 1] - lowest), diff)
+
+                lowest = min(lowest, prices[i + 1])
 
         return diff
-                
 
         
