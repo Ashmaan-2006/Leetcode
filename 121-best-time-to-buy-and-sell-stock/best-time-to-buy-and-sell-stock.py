@@ -5,17 +5,23 @@ class Solution(object):
         :rtype: int
         """
 
-        lowest = prices[0]
-        diff = 0
+        #two pointer implementation
 
-        for i in range(len(prices)):
+        l, r = 0, 1
 
-            if len(prices) > (i + 1):
+        maxProfit = 0
 
-                diff = max((prices[i + 1] - lowest), diff)
+        while r != len(prices):
 
-                lowest = min(lowest, prices[i + 1])
+            if prices[l] < prices[r]:
+                profit = prices[r] - prices[l]
+                maxProfit = max(maxProfit, profit)
 
-        return diff
+            else:
+                l = r
+
+            r += 1
+
+        return maxProfit
 
         
