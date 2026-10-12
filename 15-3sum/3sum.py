@@ -1,32 +1,61 @@
 class Solution(object):
     def threeSum(self, nums):
-        nums.sort()
-        result = []
 
-        for i in range(len(nums)):
-            if i > 0 and nums[i] == nums[i - 1]:
+        nums.sort()
+
+        triplets = []
+
+        for index, value in enumerate(nums):
+
+            if (value == nums[index - 1]) and (index > 0):
                 continue
 
-            left = i + 1
+
+
+            #start at the end, as this way we will have a very clear way to indicate to move left or right since the numbers are sorted
             right = len(nums) - 1
 
-            while left < right:
-                total = nums[i] + nums[left] + nums[right]
+            left = index + 1
 
-                if total == 0:
-                    result.append([nums[i], nums[left], nums[right]])
 
-                    while left < right and nums[left] == nums[left + 1]:
-                        left += 1
-                    while left < right and nums[right] == nums[right - 1]:
+            while (right > left):
+
+                current_sum = value + nums[left] + nums[right]
+
+                if (current_sum > 0) and (right > left):
+
+                    right -= 1
+
+                    while nums[right] == nums[right + 1] and (right > left):
                         right -= 1
 
-                    left += 1
-                    right -= 1
+                elif (current_sum < 0) and (right > left):
 
-                elif total < 0:
                     left += 1
-                else:
-                    right -= 1
 
-        return result
+                    while (nums[left] == nums[left - 1]) and (right > left):
+                        left += 1
+
+                else: 
+
+                    triplets.append([value, nums[left], nums[right]])
+
+                    if (right > left):
+
+                        left += 1
+                    
+                    else:
+                        continue
+
+                    while nums[left] == nums[left - 1] and (right > left):
+                        left += 1
+
+        return triplets
+
+
+
+
+
+
+
+        
