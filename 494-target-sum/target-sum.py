@@ -3,20 +3,23 @@ class Solution(object):
 
         dp = {}
 
-        def backtrack(i, curr_sum):
+        currsum = 0
+
+        def backtrack(i, currsum):
 
             if i == len(nums):
-                if curr_sum == target:
+                if currsum == target:
                     return 1
-
                 else:
                     return 0
+                
+            if (i, currsum) in dp:
+                return dp[(i, currsum)]
 
-            if (i, curr_sum) in dp:
-                return dp[(i, curr_sum)]
+                
+            dp[(i, currsum)] = (backtrack(i + 1, currsum - nums[i]) + backtrack(i + 1, currsum + nums[i]))
 
-            dp[(i, curr_sum)] = (backtrack(i + 1, curr_sum + nums[i]) + (backtrack(i + 1, curr_sum - nums[i])))
+            return dp[(i, currsum)]
 
-            return dp[(i, curr_sum)]
-        
+            
         return backtrack(0,0)
