@@ -21,7 +21,7 @@ class Solution(object):
 
             dp[i, currsum] = backtrack(i + 1, currsum + nums[i]) or backtrack(i + 1, currsum)
 
-            return (backtrack(i + 1, currsum + nums[i]) or backtrack(i + 1, currsum))
+            return dp[i, currsum]
 
         return backtrack(0, 0)
 
