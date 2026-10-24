@@ -13,7 +13,7 @@ class Solution(object):
             if currsum == target:
                 return True
 
-            if i == len(nums) - 1:
+            if i == len(nums) - 1 or currsum > target:
                 return False
 
             if (i, currsum) in dp:
